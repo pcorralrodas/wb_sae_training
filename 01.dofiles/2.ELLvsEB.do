@@ -47,7 +47,7 @@ set obs `=`obsnum'/`areasize''
 	tabstat eta_1-eta_5, stat(mean sd) 
 	
 	//If we get the average across all 1000 simulated vectors, then for each area
-	// the mean and sigma are approximated
+	// the mean and sigma are approximated (so mean=0 and sd=0.15)
 	egen themean = rmean(eta*) //get the mean
 	egen rsd     = rsd(eta*) //get the sigma
 	//notice how in each area across the 1000 simulated vectors the assumptions 
@@ -69,8 +69,8 @@ expand `areasize' //leaves us with 250 observations per area
 	gen e = rnormal(0,`sigmaeps')
 	
 	//Covariates, some are corrlated to the area's label
-	gen x1=runiform()<=(0.3+.5*area/80)
-	gen x2=runiform()<=(0.2) 
+	gen x1= runiform()<=(0.3+.5*area/80)
+	gen x2= runiform()<=(0.2) 
 	gen x3= runiform()<=(0.1 + .2*area/80)
 	gen x4= runiform()<=(0.5+0.3*area/80)
 	gen x5= round(max(1,rpoisson(3)*(1-.1*area/80)),1)
@@ -139,7 +139,8 @@ list in 1/20
 restore
 
 *-------------------------------------------------------------------------------
-//Why do we need the errors? Remember, poverty is a non-linear parameter.
+//Why do we need to add the household specific residuals? 
+// Remember, poverty is a non-linear parameter.
 // Without errors and just the linear fit you fail to replicate the 
 // welfare distribution, and your estimates will be considerably off.
 *-------------------------------------------------------------------------------
@@ -150,6 +151,8 @@ twoway (kdensity xb) (kdensity xb_eta) (kdensity Y_B), xline(`=ln(${p10line})')
 
 *-------------------------------------------------------------------------------
 //Let's calculate etas and variance of etas using the formulas
+//Formulas are different when using sampling weights; not included here for
+//simplicity.
 *-------------------------------------------------------------------------------
 
 egen numobs_area = sum(!missing(Y_B)), by(area) //number of observations in area
@@ -184,7 +187,7 @@ sort hhid //to ensure replicability
 //Let's use the analytical formula to get EB and ELL poverty estimates
 // Analytical formula can be used in lieu of MC
 //Let's do ELL, remember it doesn't condition on the survey sample, so
-//we don't add the predicted random effects
+//we don't add the predicted random effects, but do consider the error structure
 gen p_poor_ell = normal((${lnpline}-xb)/sqrt(`uvar'+`evar'))
 
 //Let's do EB, this does include the predicted random effects...
@@ -210,7 +213,7 @@ egen w_eb = rmean(eb_w_*)
 egen w_ell = rmean(ell_w_*)
 
 *-------------------------------------------------------------------------------
-// When assuming log normality, then for mean welfare we can use Duan's smearing 
+// When assuming log normality, for mean welfare we can use Duan's smearing 
 // transformation to back out welfare
 *-------------------------------------------------------------------------------
 //Get the fitted value
@@ -225,7 +228,7 @@ sum e_y t_welfare_lfit   w_ell //Linear fit, without location effect align to MC
 //Notice how the mean is aligned across all 5 measures.
 
 
-*--> How well does our model work for poverty?
+*--> How well does our model work for poverty at the national level?
 sum poor p_poor_eb   mc_poor_eb
 sum poor p_poor_ell  mc_poor_ell
 // At the national level ELL and EB poverty are quite similar 
@@ -270,7 +273,7 @@ twoway (scatter poor ranking, ms(t))  (lfit p_poor_ell ranking) ///
 //This is why considerable emphasis is placed in the ELL method to add 
 //area level covariates AND to minimize the share of error attributed to 
 // the locations. These area level covariates should always be included, 
-// regardless of the method used since they improve out of sample estimates.
+// regardless of the method used, since they improve out of sample estimates.
 
 
 
