@@ -232,6 +232,7 @@ forval np=1/`numpop'{
 	gen Y_`np' = XB + eta_`np' + e_`np'
 	//Now we fit the model. Remember that in practice we have Y and Xs, and 
 	//need to estimate their relationship.
+	// help sae_reml
 	sae sim reml  Y_`np' x1 x2 x3 x4 x5 x6, appendsvy lny mcrep(50) bsrep(0) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
 	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area)
@@ -261,6 +262,7 @@ forval np=1/`numpop'{
 	//need to estimate their relationship.
 	// Under H3 we could incorporate survey weights into the model fit and can
 	// also consider hetersokedasticity in the household specific errors
+	// help sae_mc_bs
 	sae sim h3  Y_`np' x1 x2 x3 x4 x5 x6, lny mcrep(50) bsrep(0) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
 	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area)
@@ -289,6 +291,7 @@ forval np=1/`numpop'{
 	//Now we fit the model. Remember that in practice we have Y and Xs, and 
 	//need to estimate their relationship.
 	//Notice that the sample is not appended here so we remove that option
+	// help sae_reml
 	sae sim reml  Y_`np' x1 x2 x3 x4 x5 x6, lny mcrep(50) bsrep(0) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
 	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area)
@@ -318,6 +321,7 @@ forval np=1/`numpop'{
 	//need to estimate their relationship.
 	// Under ELL we increase the repetitions due to the MI algorithm that 
 	// was originally used in PovMap
+	// help sae_ell
 	sae sim ell  Y_`np' x1 x2 x3 x4 x5 x6, lny rep(200) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
 	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area) eta(normal) epsilon(normal)
@@ -378,5 +382,19 @@ foreach method in directCEB directEB EB CEB h3CEB ELL{
 	}			
 }
 
+*===============================================================================
+// Let's plot some figures...
+*===============================================================================
+// Do the FGT0 MSE & Biases of the EB and CensusEB models differ? 
+twoway (scatter bias_h3CEB_fgt0_pline25 area) (scatter bias_EB_fgt0_pline25 area, ms(dh)) (scatter bias_CEB_fgt0_pline25 area, ms(dh))
+twoway (scatter mse_h3CEB_fgt0_pline25 area) (scatter mse_EB_fgt0_pline25 area, ms(dh)) (scatter mse_CEB_fgt0_pline25 area, ms(dh))
+
+// How does ELL FGT) estimates stack up against h3 census eb?
+twoway (scatter bias_h3CEB_fgt0_pline25 area) (scatter bias_ELL_fgt0_pline25 area, ms(dh)) 
+twoway (scatter mse_h3CEB_fgt0_pline25 area)  (scatter mse_ELL_fgt0_pline25 area, ms(dh)) 
+
+// What about mean welfare?
+twoway (scatter bias_h3CEB_mean area) (scatter bias_EB_mean area, ms(dh)) (scatter bias_ELL_mean area, ms(dh))
+twoway (scatter mse_h3CEB_mean area) (scatter mse_EB_mean area, ms(dh)) (scatter mse_ELL_mean area, ms(dh))
 
 

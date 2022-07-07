@@ -270,8 +270,8 @@ twoway (scatter poor ranking, ms(t)) (scatter p_poor_ell ranking, ms(dh) ) ///
 //Just something quick to see the relationship between the ranking and estimates
 twoway (scatter poor ranking, ms(t))  (lfit p_poor_ell ranking) ///
 (lfit p_poor_eb ranking, lpattern(dash))
-//This is why considerable emphasis is placed in the ELL method to add 
-//area level covariates AND to minimize the share of error attributed to 
+// This is why considerable emphasis is placed in the ELL method to add 
+// area level covariates AND to minimize the share of error attributed to 
 // the locations. These area level covariates should always be included, 
 // regardless of the method used, since they improve out of sample estimates.
 
