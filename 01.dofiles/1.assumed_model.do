@@ -37,8 +37,8 @@ expand `areasize' //leaves us with 250 observations per area
 	gen e = rnormal(0,`sigmaeps')
 	
 	//Covariates, note that some are corrlated to the area's label
-	gen x1=runiform()<=(0.3+.5*area/80)
-	gen x2=runiform()<=(0.2)
+	gen x1=	runiform()<=(0.3+.5*area/80)
+	gen x2=	runiform()<=(0.2)
 	gen x3= runiform()<=(0.1 + .2*area/80)
 	gen x4= runiform()<=(0.5+0.3*area/80)
 	gen x5= round(max(1,rpoisson(3)*(1-.1*area/80)),1)

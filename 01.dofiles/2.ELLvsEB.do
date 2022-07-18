@@ -80,14 +80,14 @@ expand `areasize' //leaves us with 250 observations per area
 	gen Y_B = 3+ .09*x1-.04*x2 - 0.09*x3 + 0.4*x4 - 0.25*x5 + 0.1*x6 + eta + e
 
 	//un-logged welfare
-	gen e_y = exp(Y)	
+	gen e_y = exp(Y_B)	
 	sum e_y, d
 	
 	//Get poverty rates at 25th percentile
 	global pline = r(p25)
 	global lnpline = ln(${pline})
 	gen poor = e_y<$pline
-	global p10line = r(p10)
+	global p50line = r(p50)
 	
 	//Merge in the true poverty rate, and welfare means by area
 	groupfunction, mean(poor Y_B e_y) merge by(area)
@@ -142,12 +142,19 @@ restore
 //Why do we need to add the household specific residuals? 
 // Remember, poverty is a non-linear parameter.
 // Without errors and just the linear fit you fail to replicate the 
-// welfare distribution, and your estimates will be considerably off.
+// welfare distribution, and your estimates will be considerably off. 
 *-------------------------------------------------------------------------------
-//When the threshold falls on the 25th percentile, you miss the mark but not by much
-twoway (kdensity xb) (kdensity xb_eta) (kdensity Y_B), xline(${lnpline}) 
-//When the threshold falls on the 10th percentile, you miss the mark by a lot
-twoway (kdensity xb) (kdensity xb_eta) (kdensity Y_B), xline(`=ln(${p10line})') 
+//Create percentiles for easier figures
+pctile xb_ptile = xb, nq(100)
+pctile xb_eta_ptile = xb_eta, nq(100)
+gen sh_pop = _n/100 if xb_ptile!=.
+pctile Y_B_ptile = Y_B, nq(100)
+
+
+//When the threshold falls on the 25th percentile, you miss the mark 
+twoway (line sh_pop xb_ptile) (line sh_pop xb_eta_ptile) (line sh_pop Y_B_ptile), xline(${lnpline}) ytitle(Cummulative share of population) xtitle(Welfare value (nat. log))
+//When the threshold falls on the 50th percentile, you don't miss
+twoway (line sh_pop xb_ptile) (line sh_pop xb_eta_ptile) (line sh_pop Y_B_ptile), xline(`=ln(${p50line})') ytitle(Cummulative share of population) xtitle(Welfare value (nat. log)) 
 
 *-------------------------------------------------------------------------------
 //Let's calculate etas and variance of etas using the formulas

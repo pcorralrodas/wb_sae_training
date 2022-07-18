@@ -18,7 +18,7 @@ set seed 588919
 *===============================================================================
 //1. Let's create a population. Just like we did before in dofiles 1 and 2
 *===============================================================================
-local numpop    = 100 //Number of populations to generate 
+local numpop    = 10 //Number of populations to generate 
 //Normally, we do this with 10K populations
 
 local obsnum    = 20000  //Number of observations in our "census"
@@ -45,8 +45,8 @@ expand `areasize' //leaves us with 250 observations per area
 	gen hhid = _n
 	
 	//Covariates, note that some are corrlated to the area's label
-	gen x1=runiform()<=(0.3+.5*area/80)
-	gen x2=runiform()<=(0.2)
+	gen x1= runiform()<=(0.3+.5*area/80)
+	gen x2= runiform()<=(0.2)
 	gen x3= runiform()<=(0.1 + .2*area/80)
 	gen x4= runiform()<=(0.5+0.3*area/80)
 	gen x5= round(max(1,rpoisson(3)*(1-.1*area/80)),1)
@@ -235,7 +235,7 @@ forval np=1/`numpop'{
 	// help sae_reml
 	sae sim reml  Y_`np' x1 x2 x3 x4 x5 x6, appendsvy lny mcrep(50) bsrep(0) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
-	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area)
+	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area) 
 	
 	//Now we structure the data according to our needs.
 	foreach x in 10 25 50 75{
@@ -265,7 +265,7 @@ forval np=1/`numpop'{
 	// help sae_mc_bs
 	sae sim h3  Y_`np' x1 x2 x3 x4 x5 x6, lny mcrep(50) bsrep(0) ///
 	matin(`mfile') pwcensus(hhsize) plines($pline10 $pline25 $pline50 $pline75) ///
-	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area)
+	aggids(0) ind(fgt0 fgt1 fgt2) uniqid(hhid) area(area) 
 	
 	//Now we structure the data according to our needs.
 	foreach x in 10 25 50 75{
@@ -389,7 +389,7 @@ foreach method in directCEB directEB EB CEB h3CEB ELL{
 twoway (scatter bias_h3CEB_fgt0_pline25 area) (scatter bias_EB_fgt0_pline25 area, ms(dh)) (scatter bias_CEB_fgt0_pline25 area, ms(dh))
 twoway (scatter mse_h3CEB_fgt0_pline25 area) (scatter mse_EB_fgt0_pline25 area, ms(dh)) (scatter mse_CEB_fgt0_pline25 area, ms(dh))
 
-// How does ELL FGT) estimates stack up against h3 census eb?
+// How does ELL FGT0 estimates stack up against h3 census eb?
 twoway (scatter bias_h3CEB_fgt0_pline25 area) (scatter bias_ELL_fgt0_pline25 area, ms(dh)) 
 twoway (scatter mse_h3CEB_fgt0_pline25 area)  (scatter mse_ELL_fgt0_pline25 area, ms(dh)) 
 
