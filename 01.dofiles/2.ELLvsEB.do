@@ -146,15 +146,18 @@ restore
 *-------------------------------------------------------------------------------
 //Create percentiles for easier figures
 pctile xb_ptile = xb, nq(100)
+lab var xb_ptile "Linear fit"
 pctile xb_eta_ptile = xb_eta, nq(100)
+lab var xb_eta_ptile "Linear fit plus location effect"
 gen sh_pop = _n/100 if xb_ptile!=.
 pctile Y_B_ptile = Y_B, nq(100)
+lab var Y_B_ptile "Welfare (nat. log)"
 
 
 //When the threshold falls on the 25th percentile, you miss the mark 
-twoway (line sh_pop xb_ptile) (line sh_pop xb_eta_ptile) (line sh_pop Y_B_ptile), xline(${lnpline}) ytitle(Cummulative share of population) xtitle(Welfare value (nat. log))
+twoway (line xb_ptile sh_pop) (line xb_eta_ptile sh_pop ) (line Y_B_ptile sh_pop ), yline(${lnpline}) xtitle(Cummulative share of population) ytitle(Welfare value (nat. log))
 //When the threshold falls on the 50th percentile, you don't miss
-twoway (line sh_pop xb_ptile) (line sh_pop xb_eta_ptile) (line sh_pop Y_B_ptile), xline(`=ln(${p50line})') ytitle(Cummulative share of population) xtitle(Welfare value (nat. log)) 
+twoway (line xb_ptile sh_pop) (line xb_eta_ptile sh_pop ) (line Y_B_ptile sh_pop ), yline(`=ln(${p50line})') xtitle(Cummulative share of population) ytitle(Welfare value (nat. log))
 
 *-------------------------------------------------------------------------------
 //Let's calculate etas and variance of etas using the formulas
