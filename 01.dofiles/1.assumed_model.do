@@ -8,6 +8,11 @@ set more off
 version 14
 set seed 648743
 
+//If this is your first time
+//net install github, from("https://haghish.github.io/github/")
+//github install pcorralrodas/SAE-Stata-Package
+
+
 *===============================================================================
 // Let's create our population with a DGP that follows the model's assumptions
 *===============================================================================
