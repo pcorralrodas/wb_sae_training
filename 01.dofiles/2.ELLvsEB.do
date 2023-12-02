@@ -155,7 +155,7 @@ lab var Y_B_ptile "Welfare (nat. log)"
 
 
 //When the threshold falls on the 25th percentile, you miss the mark 
-twoway (line xb_ptile sh_pop) (line xb_eta_ptile sh_pop ) (line Y_B_ptile sh_pop ), yline(${lnpline}) xtitle(Cumulative share of population) ytitle(Welfare value (nat. log))
+twoway (line xb_ptile sh_pop, lpattern(dash)) (line xb_eta_ptile sh_pop, lpattern(dash)) (line Y_B_ptile sh_pop, lpattern(dash)), yline(${lnpline}) xtitle(Cumulative share of population) ytitle(Welfare value (nat. log))
 //When the threshold falls on the 50th percentile, you don't miss
 twoway (line xb_ptile sh_pop) (line xb_eta_ptile sh_pop ) (line Y_B_ptile sh_pop ), yline(`=ln(${p50line})') xtitle(Cumulative share of population) ytitle(Welfare value (nat. log))
 
