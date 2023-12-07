@@ -1,11 +1,3 @@
-global main 	"C:\Users\Paul Corral\OneDrive\SAE Guidelines 2021\"
-global section  "$main\3_Unit_level\"
-global dofile   "$section\2_dofiles\"
-
-texdoc init "$dofile\Model_selection.tex", replace
-
-texdoc stlog, cmdlog
-
 clear all 
 set more off
 
@@ -14,10 +6,7 @@ Do-file prepared for SAE Guidelines
 - Real world data application
 - authors Paul Corral & Minh Nguyen
 *==============================================================================*/
-
-global main     "C:\Users\\`c(username)'\OneDrive\SAE Guidelines 2021\"
-global section  "$main\3_Unit_level\"
-global mdata    "$section\1_data\"
+global mdata    "C:\Users\WB378870\OneDrive\SAE Guidelines 2021\Data to share\Public data"
 global survey "$mdata\survey_public.dta"
 global census "$mdata\census_public.dta"
 
@@ -39,7 +28,7 @@ use "$survey", clear
 	//Remove small incomes affecting model
 	drop if e_y<1
 	//Log shift transformation to approximate normality
-	lnskew0 double bcy = exp(lny)
+	lnskew0w double bcy = exp(lny), weight(Whh)
 	//removes skeweness from distribution
 	sum lny, d 
 	sum bcy, d

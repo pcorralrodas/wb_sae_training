@@ -18,7 +18,7 @@ set seed 588919
 *===============================================================================
 //1. Let's create a population. Just like we did before in dofiles 1 and 2
 *===============================================================================
-local numpop    = 10 //Number of populations to generate 
+local numpop    = 100 //Number of populations to generate 
 //Normally, we do this with 10K populations
 
 local obsnum    = 20000  //Number of observations in our "census"

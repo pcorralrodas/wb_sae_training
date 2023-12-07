@@ -1,4 +1,3 @@
-
 clear all 
 set more off
 
@@ -26,17 +25,17 @@ use "$mdata\mysvy.dta", clear
 	global hhmodel : char _dta[rhs]
 	global alpha   : char _dta[alpha]
 	global sel     : char _dta[sel]
-
-//Add lnhhsize
-use "$census"
-gen lnhhsize = ln(hhsize)
-
-tempfile census1
-save `census1'
+	
+	gen popw = Whh*hhsize
+	rename MUN HID_mun
+	
+tempfile svy0
+save `svy0'
 
 // Create data ready for SAE - optimized dataset
-sae data import, datain(`census1') varlist($hhmodel $alpha hhsize) ///
-area(HID_mun) uniqid(hhid) dataout("$mdata\census_mata")
+sae data import, datain(`svy0') varlist($hhmodel $alpha popw e_y state) ///
+area(HID_mun) uniqid(hhid) dataout("$mdata\svy_mata") 
+
 
 *===============================================================================
 // Simulation -> Obtain point estimates
@@ -46,23 +45,7 @@ use "$mdata\mysvy.dta", clear
 	drop if $sel==1
 	rename MUN HID_mun
 sae sim h3 e_y $hhmodel [aw=Whh], area(HID_mun) zvar($alpha) mcrep(100) bsrep(0) ///
-lnskew_w matin("$mdata\census_mata") seed(`seed') pwcensus(hhsize) ///
-indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715)
+lnskew_w matin("$mdata\svy_mata") seed(`seed') pwcensus(popw) ///
+indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715) addvars(e_y state) ydump("$mdata\predicted")
 
-
-*===============================================================================
-// Simulation -> Obtain MSE estimates
-*===============================================================================	
-
-use "$mdata\mysvy.dta", clear
-	drop if e_y<1
-	drop if $sel==1
-	rename MUN HID_mun
-sae sim h3 e_y $hhmodel [aw=Whh], area(HID_mun) zvar($alpha) mcrep(100) bsrep(200) ///
-lnskew_w matin("$mdata\census_mata") seed(`seed') pwcensus(hhsize) ///
-indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715)
-
-
-save "$mdata\mySAE.dta", replace 
-
-texdoc stlog close
+sae data export, matasource("$mdata\predicted")
