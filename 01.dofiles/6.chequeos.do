@@ -49,3 +49,6 @@ lnskew_w matin("$mdata\svy_mata") seed(`seed') pwcensus(popw) ///
 indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715) addvars(e_y state) ydump("$mdata\predicted")
 
 sae data export, matasource("$mdata\predicted")
+
+sp_groupfunction [aw=_WEIGHT], poverty(_YH* e_y) povertyline(pline) gini(_YH* e_y) by(state)
+
