@@ -163,9 +163,7 @@ The production of estimators based on unit-context models is similar to those us
 
 Unit-context versions (i.e. those with aggregated covariates only) may be specified for either a one-fold nested-error model or a two-fold nested-error model. A possible unit-context model follows:
 
-\[
-y_{sach}=z_{sac}\alpha+t_{sa}\omega+g_{s}\lambda+\eta_{sa}+\varepsilon_{sach}
-\]
+$$ y_{sach}=z_{sac}\alpha+t_{sa}\omega+g_{s}\lambda+\eta_{sa}+\varepsilon_{sach} $$
 
 where \(s\) is used for an aggregation level that is over the target areas (a super-area), and \(c\) is used for subareas. Hence, \(z_{sac}\) contains subarea-level characteristics, \(t_{sa}\) includes area-level characteristics, and \(g_{s}\) is composed of super-area-level characteristics (which may include super-area fixed effects). The regression coefficients across these levels are respectively denoted \(\alpha\), \(\omega\), and \(\lambda\). The random effects, \(\eta_{sa}\), are specified in this model at the area level. Note that, among the set of covariates in this model, none is at the unit level; covariates only vary at the subarea level.
 
