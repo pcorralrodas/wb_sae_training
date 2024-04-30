@@ -200,9 +200,7 @@ A census data set of $N=20,000$ observations is created, where observations are 
 
 The welfare vector for each household within a cluster within an area is created from the model with these covariates, as follows:
 
-\[
-y_{ach}=3+.09x_{1ach}-.04x_{2ach}-.09x_{3ach}+.4x_{4ach}-.25x_{5ach}+.1x_{6ach}+.33x_{7ach}+\\eta_{a}+\\eta_{ac}+e_{ach}
-\]
+$$y_{ach}=3+.09x_{1ach}-.04x_{2ach}-.09x_{3ach}+.4x_{4ach}-.25x_{5ach}+.1x_{6ach}+.33x_{7ach}+\\eta_{a}+\\eta_{ac}+e_{ach}$$
 
 The dependent variable, $y_{ach}$, is the log of the variable of interest. The poverty line in this scenario is fixed at $z=12$. This generation process is repeated 5,000 times. This will yield 5,000 true poverty rates for each area.
 
@@ -216,7 +214,7 @@ As already said, to show that estimators based on unit-context models are still 
 
 The average across the 5,000 simulations of the estimation errors for each area represent the empirical biases of the considered area estimators. The Stata script to replicate these simulations can be found in the appendix (**{numref}`off-census:appendix:experiment1:validation`**).
 
-One could argue that, in this scenario, the $R^{2}$ of unit-context models is much lower than that one in the applications of {cite:t}`masaki2020small` and of {cite:t}`lange2018small`. For this reason, the simulation experiment is repeated modifying slightly the data generating process to increase the $R^{2}$. Specifically, in this experiment, the covariate $x_{7}$ is now generated from a random Poisson variable with mean $\\lambda=3\\left(\\frac{c}{20}-\\frac{a}{100}+u\\right)$, where $u$ is a random uniform value between 0 and 1, and $\\sigma_{e}$ is increased from 0.5 to 0.6. This modification leads to an $R^{2}$ of the unit-context model between 0.15 and 0.20, while for unit-level models the $R^{2}$ exceeds 0.60. The Stata script to replicate these simulations can be found in the following **{numref}`off-census:appendix:experiment1:better-fit`**.
+One could argue that, in this scenario, the $R^{2}$ of unit-context models is much lower than that one in the applications of {cite:t}`masaki2020small` and of {cite:t}`lange2018small`. For this reason, the simulation experiment is repeated modifying slightly the data generating process to increase the $R^{2}$. Specifically, in this experiment, the covariate $x_{7}$ is now generated from a random Poisson variable with mean $\\lambda=3\\left(\\frac{c}{20}-\\frac{a}{100}+u\\right)$, where $u$ is a random uniform value between 0 and 1, and $\sigma_{e}$ is increased from 0.5 to 0.6. This modification leads to an $R^{2}$ of the unit-context model between 0.15 and 0.20, while for unit-level models the $R^{2}$ exceeds 0.60. The Stata script to replicate these simulations can be found in the following **{numref}`off-census:appendix:experiment1:better-fit`**.
 
 #### [Unit-Context Models – Validation](#unit-context-models-validation)
 
