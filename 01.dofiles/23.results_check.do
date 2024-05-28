@@ -1,7 +1,7 @@
 set more off
 clear all
 
-global main       	"C:\Users\WB548031\GitHub\wb_sae_training"
+global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
 global data       	"$main\04.Data"
 global figs      	"$main\05.Figures"
 

@@ -12,6 +12,24 @@ global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
 global data       	"$main\04.Data"
 global figs      	"$main\05.Figures"
 
+mata
+	//Mata function for selection
+	function mysel2(_bb, _se, _pval){
+		thevars = tokens(st_local("_myhhvars"))
+		zvals   = (_bb':/_se)[1..(rows(_se)-1)]
+		zvals   = 2:*normal(-abs(zvals))
+		if (colmax(zvals)>_pval){
+			keepvar = thevars[selectindex(colmax(zvals):>zvals)]
+			return(keepvar)	
+		}	
+		else{
+			keepvar = "it's done"
+			return(keepvar)
+		}
+	}
+
+end
+
 
 use "$data\input\FHcensus_district.dta", clear
 
@@ -75,30 +93,20 @@ fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh)
 
 //Removal of non-significant variables
 	//Removal of non-significant variables
-	forval z= 0.8(-0.05)0.05{
-		qui:  fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh) nonegative
-		mata: bb=st_matrix("e(b)")
-		mata: se=sqrt(diagonal(st_matrix("e(V)")))
-		mata: zvals = bb':/se
-		mata: st_matrix("min",min(abs(zvals)))
-		local zv = (-min[1,1])
-		if (2*normal(`zv')<`z') exit	
-		foreach x of varlist `hhvars'{
-			local hhvars1
-			qui: fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh) nonegative
-			qui: test `x' 
-			if (r(p)>`z'){
-				local hhvars1
-				foreach yy of local hhvars{
-					if ("`yy'"=="`x'") dis ""
-					else local hhvars1 `hhvars1' `yy'
-				}
-				}
-			else local hhvars1 `hhvars'
-			local hhvars `hhvars1'		
-		}
-	}	
-
+	local hhvars : list clean hhvars
+	dis as error "Sim : `sim' first removal"
+	//Removal of non-significant variables
+	forval z= 0.8(-0.05)0.01{
+		local regreso 
+		while ("`regreso'"!="it's done"){
+			fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh) 
+			mata: bb=st_matrix("e(b)")
+			mata: se=sqrt(diagonal(st_matrix("e(V)")))
+			local _myhhvars : colnames(e(b))
+			mata: st_local("regreso", invtokens(mysel2(bb, se, `z')))	
+			if ("`regreso'"!="it's done") local hhvars `regreso'
+		}		
+	}
 	
 	//Global with non-significant variables removed
 	global postsign `hhvars'
@@ -118,30 +126,22 @@ fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh)
 	local hhvars $postvif
 	
 	//One final removal of non-significant covariates
+dis as error "Sim : `sim' final removal"
+	//One final removal of non-significant covariates
 	forval z= 0.8(-0.05)0.0001{
-		qui:fhsae dir_fgt0 workpop_primary `hhvars', revar(dir_fgt0_var) method(reml) precision(1e-10)
-		mata: bb=st_matrix("e(b)")
-		mata: se=sqrt(diagonal(st_matrix("e(V)")))
-		mata: zvals = bb':/se
-		mata: st_matrix("min",min(abs(zvals)))
-		local zv = (-min[1,1])
-		if (2*normal(`zv')>=`z'){
-			foreach x of varlist `hhvars'{
-				local hhvars1
-				qui: fhsae dir_fgt0 workpop_primary `hhvars', revar(dir_fgt0_var) method(reml) precision(1e-10)
-				qui: test `x' 
-				if (r(p)>`z'){
-					local hhvars1
-					foreach yy of local hhvars{
-						if ("`yy'"=="`x'") dis ""
-						else local hhvars1 `hhvars1' `yy'
-					}
-				}
-				else local hhvars1 `hhvars'
-				local hhvars `hhvars1'		
-			}
-		}
-	}
+		local regreso 
+		while ("`regreso'"!="it's done"){
+			fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(reml) precision(1e-10)
+			mata: bb=st_matrix("e(b)")
+			mata: se=sqrt(diagonal(st_matrix("e(V)")))
+			local _myhhvars : colnames(e(b))
+			mata: st_local("regreso", invtokens(mysel2(bb, se, `z')))	
+			if ("`regreso'"!="it's done") local hhvars `regreso'
+		}	
+	}	
+	
+	
+	global last `hhvars'
 	
 	fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(reml) precision(1e-10)
 	local remove head_religion3
@@ -163,14 +163,14 @@ fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh)
 		lab var u_d "FH area effects"
 	
 	histogram u_d, normal graphregion(color(white))
-	graph export "$figs\Fig1_left.png", as(png) replace
+	//graph export "$figs\Fig1_left.png", as(png) replace
 	qnorm u_d, graphregion(color(white))
 	
 	gen e_d = dir_fgt0 - fh_fgt0
 		lab var e_d "FH errors"
 	
 	histogram e_d, normal graphregion(color(white))
-	graph export "$figs\SAE Ghana 2017\3. Graphics\Fig1_right.png", as(png) replace
+	///graph export "$figs\SAE Ghana 2017\3. Graphics\Fig1_right.png", as(png) replace
 	qnorm e_d, graphregion(color(white))
 
 keep region district fh_fgt0 fh_fgt0_se
