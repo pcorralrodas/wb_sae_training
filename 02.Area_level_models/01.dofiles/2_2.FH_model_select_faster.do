@@ -6,11 +6,11 @@ set matsize 8000
 set seed 648743
 
 *===============================================================================
-//Specify team paths
+//Specify team paths (this is for the WB SummerU_2024 branch)
 *===============================================================================
 global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
-global data       	"$main\04.Data"
-global figs      	"$main\05.Figures"
+global data       	"$main\00.Data"
+
 
 mata
 	//Mata function for selection

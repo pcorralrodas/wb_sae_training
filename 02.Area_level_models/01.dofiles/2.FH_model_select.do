@@ -6,11 +6,11 @@ set matsize 8000
 set seed 648743
 
 *===============================================================================
-//Specify team paths
+//Specify team paths (this is for the WB SummerU_2024 branch)
 *===============================================================================
 global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
-global data       	"$main\04.Data"
-global figs      	"$main\05.Figures"
+global data       	"$main\00.Data"
+
 
 
 use "$data\input\FHcensus_district.dta", clear
@@ -163,14 +163,14 @@ fhsae dir_fgt0 `hhvars', revar(dir_fgt0_var) method(fh)
 		lab var u_d "FH area effects"
 	
 	histogram u_d, normal graphregion(color(white))
-	graph export "$figs\Fig1_left.png", as(png) replace
+	//graph export "$figs\Fig1_left.png", as(png) replace
 	qnorm u_d, graphregion(color(white))
 	
 	gen e_d = dir_fgt0 - fh_fgt0
 		lab var e_d "FH errors"
 	
 	histogram e_d, normal graphregion(color(white))
-	graph export "$figs\SAE Ghana 2017\3. Graphics\Fig1_right.png", as(png) replace
+	//graph export "$figs\SAE Ghana 2017\3. Graphics\Fig1_right.png", as(png) replace
 	qnorm e_d, graphregion(color(white))
 
 keep region district fh_fgt0 fh_fgt0_se

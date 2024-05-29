@@ -11,12 +11,11 @@ set more off
 version 14
 
 *===============================================================================
-//Specify team paths
+//Specify team paths (this is for the WB SummerU_2024 branch)
 *===============================================================================
-
 global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
-global data       	"$main\04.Data"
-global figs      	"$main\05.Figures"
+global data       	"$main\00.Data"
+
 
 
 use "$data\input\survey_2017.dta",clear

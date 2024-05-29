@@ -1,15 +1,18 @@
 set more off
 clear all
 
+*===============================================================================
+//Specify team paths (this is for the WB SummerU_2024 branch)
+*===============================================================================
 global main       	"C:\Users\\`c(username)'\GitHub\wb_sae_training"
-global data       	"$main\04.Data"
-global figs      	"$main\05.Figures"
+global data       	"$main\00.Data"
+
 
 
 *===============================================================================
 // Import centroids...
 *===============================================================================
-import delimited using "$dpath\district_centroids.csv", clear
+import delimited using "$data\district_centroids.csv", clear
 
 keep district dist_code x y
 rename district distname 
@@ -39,7 +42,7 @@ save `pops'
 *===============================================================================
 // Direct estimates 
 *===============================================================================
-use "$dpath/direct_glss7_region.dta", clear
+use "$data/direct_glss7_region.dta", clear
 gen u_ci = fgt0+invnormal(0.975)*sqrt(dir_fgt0_var)
 gen l_ci = fgt0+invnormal(0.025)*sqrt(dir_fgt0_var)
 
@@ -56,7 +59,7 @@ save `direct'
 *===============================================================================
 //Fay Herriot Estimates
 *===============================================================================
-use "$dpath/FH_sae_poverty.dta", clear
+use "$data/FH_sae_poverty.dta", clear
 merge m:1 region using `direct'
 	drop if _m==2
 	drop _m
@@ -68,7 +71,7 @@ merge 1:1 district using `centroids'
 	drop if _m==2
 	drop _m
 	
-merge 1:1 district using "$outdata\direct_glss7.dta", keepusing( dir_fgt0 dir_fgt0_var)
+merge 1:1 district using "$data\direct_glss7.dta", keepusing( dir_fgt0 dir_fgt0_var)
 	drop if _m==2
 	drop _m
 	
@@ -76,18 +79,18 @@ merge 1:1 district using "$outdata\direct_glss7.dta", keepusing( dir_fgt0 dir_fg
 gen se=sqrt( dir_fgt0_var)
 twoway (scatter fh_fgt0_se se ) (line se se), graphregion(color(white)) ytitle(Fay Herriot (rmse)) xtitle(Direct estimate (SE)) legend(off)
 
-	graph export "~\3. Graphics\Fig2_right.png", as(png) replace
+	//graph export "~\3. Graphics\Fig2_right.png", as(png) replace
 
 twoway (scatter fh_fgt0 dir_fgt0 ) (line fh_fgt0 fh_fgt0), graphregion(color(white)) ytitle(Fay Herriot) xtitle(Direct estimate) legend(off)
 
-graph export "~\3. Graphics\Fig2_left.png", as(png) replace
+//graph export "~\3. Graphics\Fig2_left.png", as(png) replace
 	
 preserve
 	groupfunction [aw=pop], mean(fh_fgt0 direct_fgt0 *_ci) by(region)
 
 	graph dot (asis) fh_fgt0 u_ci l_ci, over(region) marker(2, mcolor(red) msymbol(diamond)) marker(3, mcolor(red) msymbol(diamond)) graphregion(color(white)) legend(order(1 "Poverty headcount from Fay Herriot" 2 "Direct estimate CI (95%)") cols(1)) 
 	
-	graph export "~\3. Graphics\SAE_CI.png", as(png) replace
+	//graph export "~\3. Graphics\SAE_CI.png", as(png) replace
 restore
 *===============================================================================
 // HOtspots
@@ -139,7 +142,7 @@ gen sig_diff = "Significantly more poor than the region average" if l_ci_fh>u_ci
 replace sig_diff = "Significantly less poor than the region average" if u_ci_fh<l_ci
 
 
-export delimited using "$dpath\fh_sae_gha.csv", replace
+export delimited using "$data\fh_sae_gha.csv", replace
 
 
 *===============================================================================
@@ -154,4 +157,4 @@ gen l_ci = max(0,fh_fgt0+invnormal(0.025)*fh_fgt0_se)
 
 order region distname pop fh_fgt0 fh_fgt0_se numpoor l_ci u_ci 
 
-export excel using "$dpath\povertyTable.xlsx", sheet(tab_stata) first(variable) sheetreplace
+export excel using "$data\povertyTable.xlsx", sheet(tab_stata) first(variable) sheetreplace
