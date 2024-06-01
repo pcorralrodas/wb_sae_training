@@ -15,7 +15,9 @@
 
 \date{\today}
 
-\author[]{World Bank Summer University 2024}
+\author[]{Paul Corral, Heath Henderson, and Sandra Segovia \newline
+~ \newline
+World Bank Summer University 2024}
 
 \begin{document}
 
@@ -171,7 +173,8 @@ r(f_t) = \gamma M_t + \frac{1}{2}\lambda \sum_j m_{tj}^2
 manner, building one tree at a time.
 \item Ideally, one would select trees by enumerating all possible structures and then
 using the one that minimizes the objective function, but this is often intractable.
-\item XGBoost instead seeks to minimize the objective function by greedily optimizingone level of the tree at a time:
+\item XGBoost instead seeks to minimize the objective function by greedily optimizing
+one level of the tree at a time:
 \begin{enumerate}
 \item For a given node, calculate the reduction in the objective function for every possible 
 split rule for every available covariate.

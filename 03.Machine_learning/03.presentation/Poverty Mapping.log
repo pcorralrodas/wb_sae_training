@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 MAY 2024 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 JUN 2024 10:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -689,23 +689,31 @@ Package caption Info: Hyperref support is turned off
 \c@subfigure=\count155
 \c@subtable=\count156
 )
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\newline' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\newline' on input line 20.
+
 (./Poverty Mapping.aux)
 \openout1 = `"Poverty Mapping.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -773,7 +781,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box54
-Package hyperref Info: Link coloring OFF on input line 20.
+Package hyperref Info: Link coloring OFF on input line 22.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -783,66 +791,66 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count163
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 22.
+LaTeX Info: Redefining \pageref on input line 22.
+LaTeX Info: Redefining \nameref on input line 22.
 
 (./Poverty Mapping.out) (./Poverty Mapping.out)
 \@outlinefile=\write5
 \openout5 = `"Poverty Mapping.out"'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 20.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 20.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 22.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 20.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 20.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 20.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 20.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 22.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 20.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 20.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 20.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 22.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 20.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 20.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 20.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 22.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 20.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 20.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 20.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 22.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 20.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 20.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 20.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 20.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 20.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 22.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 20.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 20.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 22.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 22.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 2
-0.
+2.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-20.
+22.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 20.
+ut line 22.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/beamer/translator/dicts/translato
 r-basic-dictionary/translator-basic-dictionary-English.dict
@@ -868,30 +876,30 @@ Dictionary: translator-numbers-dictionary, Language: English
 r-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 20.
+LaTeX Info: Redefining \includegraphics on input line 22.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
 (./Poverty Mapping.nav)
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 29.
+(Font)              size <5> substituted on input line 31.
 
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 53.
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 53.
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 53.
+line 55.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -901,21 +909,21 @@ thkerncmss.
 ] <Chi_1.png, id=69, 843.15pt x 326.21875pt>
 File: Chi_1.png Graphic file (type png)
  <use Chi_1.png>
-Package pdftex.def Info: Chi_1.png used on input line 64.
+Package pdftex.def Info: Chi_1.png used on input line 66.
 (pdftex.def)             Requested size: 318.67209pt x 123.2974pt.
  [3
 
  <./Chi_1.png>] <Chi_2.png, id=97, 983.675pt x 485.815pt>
 File: Chi_2.png Graphic file (type png)
  <use Chi_2.png>
-Package pdftex.def Info: Chi_2.png used on input line 80.
+Package pdftex.def Info: Chi_2.png used on input line 82.
 (pdftex.def)             Requested size: 318.67209pt x 157.38393pt.
  [4
 
  <./Chi_2.png>] <Chi_3.png, id=124, 487.8225pt x 516.93124pt>
 File: Chi_3.png Graphic file (type png)
  <use Chi_3.png>
-Package pdftex.def Info: Chi_3.png used on input line 89.
+Package pdftex.def Info: Chi_3.png used on input line 91.
 (pdftex.def)             Requested size: 179.25114pt x 189.9443pt.
  [5
 
@@ -926,13 +934,13 @@ Package pdftex.def Info: Chi_3.png used on input line 89.
 ] <tree.pdf, id=204, 553.06625pt x 392.46625pt>
 File: tree.pdf Graphic file (type pdf)
  <use tree.pdf>
-Package pdftex.def Info: tree.pdf used on input line 146.
+Package pdftex.def Info: tree.pdf used on input line 148.
 (pdftex.def)             Requested size: 159.333pt x 113.06372pt.
 
 <partition.pdf, id=205, 586.19pt x 424.58624pt>
 File: partition.pdf Graphic file (type pdf)
  <use partition.pdf>
-Package pdftex.def Info: partition.pdf used on input line 146.
+Package pdftex.def Info: partition.pdf used on input line 148.
 (pdftex.def)             Requested size: 159.333pt x 115.4043pt.
  [8
 
@@ -948,7 +956,7 @@ Package pdftex.def Info: partition.pdf used on input line 146.
 <Data.png, id=360, 978.65625pt x 540.0175pt>
 File: Data.png Graphic file (type png)
  <use Data.png>
-Package pdftex.def Info: Data.png used on input line 239.
+Package pdftex.def Info: Data.png used on input line 241.
 (pdftex.def)             Requested size: 278.83578pt x 153.85715pt.
  [13
 
@@ -956,21 +964,21 @@ Package pdftex.def Info: Data.png used on input line 239.
 <Code_1.png, id=388, 586.19pt x 284.06125pt>
 File: Code_1.png Graphic file (type png)
  <use Code_1.png>
-Package pdftex.def Info: Code_1.png used on input line 247.
+Package pdftex.def Info: Code_1.png used on input line 249.
 (pdftex.def)             Requested size: 318.67209pt x 154.42236pt.
  [14
 
  <./Code_1.png>] <Code_2.png, id=415, 587.19376pt x 253.94875pt>
 File: Code_2.png Graphic file (type png)
  <use Code_2.png>
-Package pdftex.def Info: Code_2.png used on input line 255.
+Package pdftex.def Info: Code_2.png used on input line 257.
 (pdftex.def)             Requested size: 318.67209pt x 137.81613pt.
  [15
 
  <./Code_2.png>] <Plot.png, id=442, 419.8887pt x 315.8199pt>
 File: Plot.png Graphic file (type png)
  <use Plot.png>
-Package pdftex.def Info: Plot.png used on input line 263.
+Package pdftex.def Info: Plot.png used on input line 265.
 (pdftex.def)             Requested size: 239.00558pt x 179.77344pt.
  [16
 
@@ -986,11 +994,11 @@ Package pdftex.def Info: Plot.png used on input line 263.
 \tf@snm=\write8
 \openout8 = `"Poverty Mapping.snm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 282.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 282.
  (./Poverty Mapping.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 282.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 282.
 Package rerunfilecheck Info: File `"Poverty Mapping".out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1000,10 +1008,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 18215 strings out of 492995
- 346791 string characters out of 6132704
- 420538 words of memory out of 5000000
- 21323 multiletter control sequences out of 15000+600000
+ 18216 strings out of 492995
+ 346804 string characters out of 6132704
+ 420752 words of memory out of 5000000
+ 21324 multiletter control sequences out of 15000+600000
  14240 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,14n,55p,819b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1017,7 +1025,7 @@ r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr
 /local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pf
 b>
-Output written on "Poverty Mapping.pdf" (17 pages, 3316329 bytes).
+Output written on "Poverty Mapping.pdf" (17 pages, 3316449 bytes).
 PDF statistics:
  533 PDF objects out of 1000 (max. 8388607)
  470 compressed objects within 5 object streams
