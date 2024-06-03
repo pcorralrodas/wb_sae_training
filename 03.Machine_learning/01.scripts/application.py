@@ -3,7 +3,8 @@ import xgboost as xgb
 import pandas as pd
 
 # Set directory
-path = '/Users/hendersonhl/Desktop/Summer University/Application/'
+#path = '/Users/hendersonhl/Desktop/Summer University/Application/'
+path = 'C:/Users/WB378870/GitHub/wb_sae_training/00.Data/input/'
 
 # Import data
 data = pd.read_csv(path + 'data.csv', header = 0)
