@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 JUN 2024 14:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  4 JUN 2024 20:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -982,7 +982,7 @@ Package pdftex.def Info: Code_2.png used on input line 265.
 (pdftex.def)             Requested size: 318.67209pt x 137.81613pt.
  [16
 
- <./Code_2.png>] <Plot.png, id=476, 419.8887pt x 315.8199pt>
+ <./Code_2.png>] <Plot.png, id=477, 419.8887pt x 315.8199pt>
 File: Plot.png Graphic file (type png)
  <use Plot.png>
 Package pdftex.def Info: Plot.png used on input line 273.
@@ -1015,10 +1015,10 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 18222 strings out of 492995
- 346882 string characters out of 6132704
+ 18224 strings out of 492995
+ 346898 string characters out of 6132704
  420752 words of memory out of 5000000
- 21328 multiletter control sequences out of 15000+600000
+ 21330 multiletter control sequences out of 15000+600000
  14240 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,14n,55p,819b,616s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1032,7 +1032,7 @@ r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr
 /local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><
 /usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pf
 b>
-Output written on "Poverty Mapping.pdf" (18 pages, 3328363 bytes).
+Output written on "Poverty Mapping.pdf" (18 pages, 3328366 bytes).
 PDF statistics:
  571 PDF objects out of 1000 (max. 8388607)
  502 compressed objects within 6 object streams
