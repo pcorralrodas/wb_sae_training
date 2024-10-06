@@ -165,7 +165,7 @@ twoway (line xb_ptile sh_pop) (line xb_eta_ptile sh_pop ) (line Y_B_ptile sh_pop
 //simplicity.
 *-------------------------------------------------------------------------------
 
-egen numobs_area = sum(!missing(Y_B)), by(area) //number of observations in area
+egen numobs_area = sum(!missing(Y_B)), by(area)        //number of observations in area
 egen double y_minusxb = mean(Y_B-xb), by(area)         // Y_B - xb
 gen double gamma  = `uvar'/(`uvar'+`evar'/numobs_area) //Gamma or adjustment factor
 gen double my_eta = gamma*y_minusxb                    //eta

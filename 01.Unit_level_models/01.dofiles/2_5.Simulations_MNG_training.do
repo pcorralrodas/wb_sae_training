@@ -49,35 +49,41 @@ expand `areasize' //leaves us with 250 observations per area
 	
 	//un-logged welfare
 	gen e_y = exp(Y_B)	
-	sum e_y, d
+	sum e_y [aw=x5], d
+	
+	local pline_25 = r(p25)
+	local pline_50 = r(p50)
+	local pline_75 = r(p75)
+	
+	//Hh size
+	gen hhsize = x5
+	
+tempfile census
+save `census'
 *===============================================================================	
 //Take a 20% SRS by area
 *===============================================================================
 sort hhid
 sample 20, by(area)
 
-//Fit the model
-mixed Y_B x1 x2 x3 x4 x5 x6 ||area: , reml
-
-// Obtain linear fit
-predict xb, xb
-
-//Obtain linear fit with location effects
-predict xb_eta, fitted
-
-//Obtain only the location effects (eta_c)
-predict eta_c, reffect
-
-//Obtain residuals...(e_ch)
-predict e_ch, res
+tempfile survey
+save `survey'
 
 *===============================================================================
-//Check model assumption: Normally distributed errors
+// Import census
 *===============================================================================
-qnorm e_ch //Plot household errors - Normal Q-Q plot
-bysort area: gen theone = _n==1
-qnorm eta_c if theone==1 //Plot random location effects - Normal Q-Q plot
+tempfile matacensus
+sae data import, datain(`census') varlist(x1 x2 x3 x4 x5 x6 hhsize) uniqid(hhid) ///
+area(area) dataout(`matacensus')
+
+*===============================================================================
+// Do simulations
+*===============================================================================
+use `survey', clear
+
+sae sim h3 e_y x1-x6 [aw=x5], area(area) uniqid(hhid) mcrep(100) bsrep(10) ///
+matin(`matacensus') indicators(fgt0 fgt1 fgt2 gini) aggids(0) ///
+pwcensus(hhsize) plines(`pline_25' `pline_50' `pline_75') ///
+seed(26092024) lnskew_w
 
 
-	
-	
