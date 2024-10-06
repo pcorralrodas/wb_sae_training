@@ -77,7 +77,7 @@ sae data import, datain(`census') varlist(x1 x2 x3 x4 x5 x6 hhsize) uniqid(hhid)
 area(area) dataout(`matacensus')
 
 *===============================================================================
-// Do simulations
+// Do simulations - Assume that x5 is the survey weight
 *===============================================================================
 use `survey', clear
 
