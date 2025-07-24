@@ -51,7 +51,7 @@ use "$mdata\mysvy.dta", clear
 	drop if e_y<1
 	drop if $sel==1
 	rename MUN HID_mun
-sae sim h3 e_y $hhmodel, area(HID_mun) zvar($alpha) mcrep(100) bsrep(0) ///
+sae sim h3 e_y $hhmodel [aw=Whh], area(HID_mun) zvar($alpha) mcrep(100) bsrep(0) ///
 lnskew matin("$mdata\census_mata") seed(`seed') pwcensus(hhsize) ///
 indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715)
 
@@ -64,7 +64,7 @@ use "$mdata\mysvy.dta", clear
 	drop if e_y<1
 	drop if $sel==1
 	rename MUN HID_mun
-sae sim h3 e_y $hhmodel, area(HID_mun) zvar($alpha) mcrep(100) bsrep(200) ///
+sae sim h3 e_y $hhmodel [aw=Whh], area(HID_mun) zvar($alpha) mcrep(100) bsrep(200) ///
 lnskew matin("$mdata\census_mata") seed(`seed') pwcensus(hhsize) ///
 indicators(fgt0 fgt1 fgt2) aggids(0 4) uniqid(hhid) plines(715)
 
